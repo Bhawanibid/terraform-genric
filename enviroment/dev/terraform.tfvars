@@ -1,15 +1,15 @@
 rgs = {
   "rg1" = {
-    name       = "rg5-westus-001"
-    location   = "west us"
+    name       = "rg-JapanEast-001"
+    location   = "Japan East"
     managed_by = "terraform"
     tags = {
       env = "dev"
     }
   }
   "rg2" = {
-    name       = "rg6-centralindia-002"
-    location   = "central india"
+    name       = "rg-JapanEast-002"
+    location   = "Japan East"
     managed_by = "terraform"
     tags = {
       env = "dev"
@@ -19,9 +19,9 @@ rgs = {
 
 stg = {
   "stg1" = {
-    name                     = "devstg0010"
-    resource_group_name      = "rg5-westus-001"
-    location                 = "west us"
+    name                     = "devstgab10"
+    resource_group_name      = "rg-JapanEast-001"
+    location                 = "Japan East"
     account_tier             = "Standard"
     account_replication_type = "GRS"
     tags = {
@@ -33,8 +33,8 @@ stg = {
 vnets = {
   "vnet1" = {
     vnet_name           = "sathi001"
-    location            = "west us"
-    resource_group_name = "rg5-westus-001"
+    location            = "Japan East"
+    resource_group_name = "rg-JapanEast-001"
     address_space       = ["10.0.0.0/16"]
     nsg_name            = "raw"
     security_rule = {
@@ -56,8 +56,8 @@ vnets = {
   }
   "vnet2" = {
     vnet_name           = "sathi002"
-    location            = "central india"
-    resource_group_name = "rg6-centralindia-002"
+    location            = "Japan East"
+    resource_group_name = "rg-JapanEast-002"
     address_space       = ["10.0.0.0/16"]
     nsg_name            = "raw-01"
     security_rule = {
@@ -83,7 +83,7 @@ vnets = {
 subnets = {
   subnet1 = {
     subnet_name          = "frontend-subnet"
-    resource_group_name  = "rg5-westus-001"
+    resource_group_name  = "rg-JapanEast-001"
     virtual_network_name = "sathi001"
     address_prefixes     = ["10.0.2.0/24"]
   }
@@ -98,8 +98,8 @@ subnets = {
 pips = {
   pip1 = {
     name                = "pip-ram-1"
-    resource_group_name = "rg5-westus-001"
-    location            = "west us"
+    resource_group_name = "rg-JapanEast-001"
+    location            = "Japan East"
     allocation_method   = "Static"
 
     # Optional
@@ -115,8 +115,8 @@ pips = {
   }
   pip2 = {
     name                = "pip-ram-2"
-    resource_group_name = "rg6-centralindia-002"
-    location            = "central india"
+    resource_group_name = "rg-JapanEast-002"
+    location            = "Japan East"
     allocation_method   = "Static"
 
     # Optional
@@ -138,8 +138,8 @@ pips = {
 vms = {
   vm1 = {
     name                = "linux-vm-01"
-    resource_group_name = "rg5-westus-001"
-    location            = "west us"
+    resource_group_name = "rg-JapanEast-001"
+    location            = "Japan East"
     size                = "Standard_B2ms"
     secret_name         = "vm1-user"
     secret_password     = "vm1-password"
@@ -176,8 +176,8 @@ vms = {
   }
   vm2 = {
     name                = "linux-vm-01"
-    resource_group_name = "rg6-centralindia-002"
-    location            = "central india"
+    resource_group_name = "rg-JapanEast-002"
+    location            = "Japan East"
     size                = "Standard_A4_v2"
     secret_name         = "vm1-user"
     secret_password     = "vm1-password"
@@ -216,8 +216,8 @@ vms = {
 sql_servers = {
   sql1 = {
     name                = "mssqlserver-todo"
-    resource_group_name = "rg5-westus-001"
-    location            = "west us"
+    resource_group_name = "rg-JapanEast-001"
+    location            = "Japan East"
     version             = "12.0"
     key_vault_name      = "devkeyvault001"
     secret_name         = "sql-user"
@@ -252,7 +252,7 @@ sql_databases = {
     max_size_gb         = 2
     enclave_type        = "VBS"
     server_name         = "mssqlserver-todo"
-    resource_group_name = "rg5-westus-001"
+    resource_group_name = "rg-JapanEast-001"
 
 
     tags = {
@@ -269,8 +269,8 @@ sql_databases = {
 key_vaults = {
   kv1 = {
     name                = "devkeyvault001"
-    location            = "west us"
-    resource_group_name = "rg5-westus-001"
+    location            = "Japan East"
+    resource_group_name = "rg-JapanEast-001"
 
     sku_name = "standard"
 
@@ -294,7 +294,7 @@ key_vault_secrets = {
     name                = "sql-user"
     value               = "adminBhawani"
     key_vault_name      = "devkeyvault001"
-    resource_group_name = "rg5-westus-001"
+    resource_group_name = "rg-JapanEast-001"
 
     tags = {
       environment = "Sql_user"
@@ -304,7 +304,7 @@ key_vault_secrets = {
     name                = "sql-password"
     value               = "Bhawani@123"
     key_vault_name      = "devkeyvault001"
-    resource_group_name = "rg5-westus-001"
+    resource_group_name = "rg-JapanEast-001"
 
     tags = {
       environment = "Sql_pass"
@@ -314,7 +314,7 @@ key_vault_secrets = {
     name                = "vm1-user"
     value               = "adminBhawani"
     key_vault_name      = "devkeyvault001"
-    resource_group_name = "rg5-westus-001"
+    resource_group_name = "rg-JapanEast-001"
 
     tags = {
       environment = "Sql_pass"
@@ -324,11 +324,66 @@ key_vault_secrets = {
     name                = "vm1-password"
     value               = "Bhawani@123"
     key_vault_name      = "devkeyvault001"
-    resource_group_name = "rg5-westus-001"
+    resource_group_name = "rg-JapanEast-001"
 
     tags = {
       environment = "Sql_pass"
     }
   }
 }
+
+acr_configs = {
+  acr1 = {
+    name                = "acrprod001"
+    resource_group_name = "rg-JapanEast-001"
+    location            = "Japan East"
+    sku                 = "Premium"
+    admin_enabled       = false
+
+    georeplications = [
+      {
+        location                = "central india"
+        zone_redundancy_enabled = true
+      },
+      {
+        location = "central india"
+      }
+    ]
+
+    network_rule_set = {
+      default_action = "Deny"
+      ip_rule = [
+        {
+          action   = "Allow"
+          ip_range = "10.10.0.0/16"
+        }
+      ]
+    }
+  }
+}
+
+
+aks_config = {
+    aks1 = {
+      name                = "prod-todo-aks"
+      location            = "Japan East"
+      resource_group_name = "rg-JapanEast-001"
+      dns_prefix          = "prodaks"
+
+      default_node_pool = {
+        name       = "default"
+        node_count = 2
+        vm_size    = "Standard_D2_v2"
+      }
+
+      identity = {
+        type = "SystemAssigned"
+      }
+
+      tags = {
+        Environment = "Production"
+        Owner       = "DevOpsTeam"
+      }
+    }
+  }
 
