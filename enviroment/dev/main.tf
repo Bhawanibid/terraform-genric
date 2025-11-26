@@ -57,3 +57,16 @@ module "key-vault-secret" {
   source            = "../../modules/azurerm_key_vault_secret"
   key_vault_secrets = var.key_vault_secrets
 }
+
+
+module "acr" {
+  depends_on = [ module.rg ]
+  source = "../../modules/azurerm_container_registery"
+  acr_configs = var.acr_configs
+}
+
+module "aks" {
+  depends_on = [ module.rg ]
+  source = "../../modules/azurerm_kubernates_cluster"
+  aks_config = var.aks_config
+}
